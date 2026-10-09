@@ -1,0 +1,460 @@
+{% extends "boutique/base.html" %}
+{% load static %}
+
+{% block contenu %}
+
+    <!-- =========================
+         ACCUEIL / HERO
+    ========================== -->
+
+    <section
+        id="accueil"
+        class="hero"
+    >
+
+        <div class="hero-contenu">
+
+            <div class="hero-texte">
+
+                <p class="hero-badge">
+                    💻 Votre partenaire informatique
+                </p>
+
+                <h1>
+                    La technologie adaptée à vos besoins.
+                </h1>
+
+                <p class="hero-description">
+                    Découvrez une sélection d'ordinateurs performants
+                    pour les études, le travail, les projets professionnels
+                    et le divertissement.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#produit"
+                        class="btn btn-principal"
+                    >
+                        Découvrir nos produits
+                        <span aria-hidden="true">→</span>
+                    </a>
+
+                    <a
+                        href="#apropos"
+                        class="btn btn-secondaire"
+                    >
+                        En savoir plus
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- IMAGE HERO -->
+
+            <div class="hero-image">
+
+                <img
+                    src="{% static 'boutique/img/pc.png' %}"
+                    alt="Ordinateur moderne présenté par Computer Store"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         À PROPOS
+    ========================== -->
+
+    <section
+        id="apropos"
+        class="apropos section"
+    >
+
+        <div class="apropos-image">
+
+            <img
+                src="{% static 'boutique/img/ordinateur.png' %}"
+                alt="Ordinateur proposé par Computer Store"
+            >
+
+        </div>
+
+
+        <div class="apropos-contenu">
+
+            <p class="section-eyebrow">
+                À PROPOS DE NOUS
+            </p>
+
+            <h2>
+                La technologie à portée de main.
+            </h2>
+
+            <p>
+                Computer Store propose différents équipements
+                informatiques adaptés aux étudiants, aux professionnels
+                et aux passionnés de technologie.
+            </p>
+
+            <p>
+                Notre objectif est de vous aider à trouver du matériel
+                fiable et performant, adapté à vos besoins et à votre budget.
+            </p>
+
+            <a
+                href="#produit"
+                class="lien-section"
+            >
+                Voir nos produits
+                <span aria-hidden="true">→</span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         POURQUOI NOUS CHOISIR
+    ========================== -->
+
+    <section class="avantages section">
+
+        <div class="section-introduction">
+
+            <p class="section-eyebrow">
+                NOS AVANTAGES
+            </p>
+
+            <h2>
+                Pourquoi choisir Computer Store ?
+            </h2>
+
+            <p>
+                Une sélection pensée pour vous accompagner
+                dans vos études, votre travail et vos projets.
+            </p>
+
+        </div>
+
+
+        <div class="avantages-container">
+
+            <!-- AVANTAGE 1 -->
+
+            <article class="avantage">
+
+                <div
+                    class="avantage-icon"
+                    aria-hidden="true"
+                >
+                    ⚡
+                </div>
+
+                <h3>
+                    Performance
+                </h3>
+
+                <p>
+                    Des ordinateurs adaptés aux besoins du quotidien
+                    comme aux tâches les plus exigeantes.
+                </p>
+
+            </article>
+
+
+            <!-- AVANTAGE 2 -->
+
+            <article class="avantage">
+
+                <div
+                    class="avantage-icon"
+                    aria-hidden="true"
+                >
+                    ✓
+                </div>
+
+                <h3>
+                    Qualité
+                </h3>
+
+                <p>
+                    Une sélection de matériel pensée pour offrir
+                    une expérience fiable et agréable.
+                </p>
+
+            </article>
+
+
+            <!-- AVANTAGE 3 -->
+
+            <article class="avantage">
+
+                <div
+                    class="avantage-icon"
+                    aria-hidden="true"
+                >
+                    💬
+                </div>
+
+                <h3>
+                    Accompagnement
+                </h3>
+
+                <p>
+                    Nous vous aidons à choisir le matériel
+                    correspondant le mieux à vos besoins.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUITS
+    ========================== -->
+
+    <section
+        id="produit"
+        class="produits section"
+    >
+
+        <div class="section-introduction">
+
+            <p class="section-eyebrow">
+                NOTRE SÉLECTION
+            </p>
+
+            <h2>
+                Découvrez nos produits.
+            </h2>
+
+            <p>
+                Une sélection d'ordinateurs pour les études,
+                le travail et le divertissement.
+            </p>
+
+        </div>
+
+
+        <!-- FILTRES PAR CATÉGORIE -->
+
+        <nav class="filtres" aria-label="Filtrer les produits par catégorie">
+
+            <a href="{% url 'accueil' %}#produit"
+               class="filtre {% if not categorie_active %}actif{% endif %}">
+                Tous
+            </a>
+
+            {% for categorie in categories %}
+            <a href="?categorie={{ categorie.id }}#produit"
+               class="filtre {% if categorie_active == categorie.id|stringformat:'s' %}actif{% endif %}">
+                {{ categorie.nom }}
+            </a>
+            {% endfor %}
+
+        </nav>
+
+
+        <div class="produits-container">
+            {% for produit in produits %}
+            <article class="produit">
+
+                <div class="produit-image">
+
+                    {% if produit.badge %}
+                    <span class="badge-produit">{{ produit.badge }}</span>
+                    {% endif %}
+
+                    <a href="{% url 'detail_produit' produit.id %}">
+                        <img src="{{ produit.image.url }}" alt="{{ produit.nom }}">
+                    </a>
+
+                </div>
+
+                <div class="produit-contenu">
+
+                    <p class="categorie">{{ produit.categorie.nom }}</p>
+
+                    <h3>
+                        <a href="{% url 'detail_produit' produit.id %}">{{ produit.nom }}</a>
+                    </h3>
+
+                    <p class="produit-description">{{ produit.description }}</p>
+
+                    <div class="produit-footer">
+
+                        <p class="prix">{{ produit.prix }} FCFA</p>
+
+                        <form action="{% url 'ajouter_au_panier' produit.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Acheter</button>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </article>
+            {% empty %}
+            <p>Aucun produit disponible pour le moment.</p>
+            {% endfor %}
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section
+        id="contact"
+        class="contact-section section"
+    >
+
+        <div class="contact-informations">
+
+            <p class="section-eyebrow">
+                CONTACT
+            </p>
+
+            <h2>
+                Une question ? Parlons-en.
+            </h2>
+
+            <p>
+                Vous souhaitez obtenir plus d'informations sur
+                un produit ou nous contacter ? Envoyez-nous un message.
+            </p>
+
+
+            <div class="contact-details">
+
+                <a href="mailto:konemhd2003@gmail.com">
+
+                    <span aria-hidden="true">
+                        ✉
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            E-mail
+                        </strong>
+
+                        <small>
+                            konemhd2003@gmail.com
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+                <a href="tel:+2250584643499">
+
+                    <span aria-hidden="true">
+                        ☎
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Téléphone
+                        </strong>
+
+                        <small>
+                            +225 05 84 64 34 99
+                        </small>
+
+                    </div>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FORMULAIRE -->
+
+        <div class="formulaire-container">
+            <form action="{% url 'accueil' %}" method="post">
+
+                {% csrf_token %}
+
+                <fieldset>
+
+                    <legend>
+                        Envoyez-nous un message
+                    </legend>
+
+                    {% for message in messages %}
+                    <p class="message-succes">{{ message }}</p>
+                    {% endfor %}
+
+                    <div class="form-row">
+
+                        <div class="contact">
+                            <label for="{{ formulaire.nom.id_for_label }}">Nom</label>
+                            {{ formulaire.nom }}
+                            {{ formulaire.nom.errors }}
+                        </div>
+
+                        <div class="contact">
+                            <label for="{{ formulaire.prenom.id_for_label }}">Prénom</label>
+                            {{ formulaire.prenom }}
+                            {{ formulaire.prenom.errors }}
+                        </div>
+
+                    </div>
+
+                    <div class="contact">
+                        <label for="{{ formulaire.email.id_for_label }}">Adresse e-mail</label>
+                        {{ formulaire.email }}
+                        {{ formulaire.email.errors }}
+                    </div>
+
+                    <div class="contact">
+                        <label for="{{ formulaire.telephone.id_for_label }}">Téléphone</label>
+                        {{ formulaire.telephone }}
+                        {{ formulaire.telephone.errors }}
+                    </div>
+
+                    <div class="contact">
+                        <label for="{{ formulaire.contenu.id_for_label }}">Votre message</label>
+                        {{ formulaire.contenu }}
+                        {{ formulaire.contenu.errors }}
+                    </div>
+
+                    <div class="button-contact">
+
+                        <button type="submit">
+                            Envoyer le message
+                        </button>
+
+                        <button type="reset" class="button-reset">
+                            Effacer
+                        </button>
+
+                    </div>
+
+                </fieldset>
+
+            </form>
+        </div>
+
+    </section>
+
+{% endblock %}

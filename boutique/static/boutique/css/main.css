@@ -1,0 +1,1795 @@
+/* ===================================
+
+1. RÉINITIALISATION
+   =================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+/* ===================================
+2. VARIABLES
+=================================== */
+
+:root {
+--orange: #f5a623;
+--orange-fonce: #e28f00;
+
+--vert: #16803c;
+--vert-fonce: #0d632e;
+
+--blanc: #ffffff;
+
+--noir: #171717;
+--gris-fonce: #374151;
+--gris: #6b7280;
+
+--fond: #f8fafc;
+--fond-secondaire: #f1f5f9;
+
+--bordure: #e5e7eb;
+
+--ombre: 0 0.8rem 2rem rgba(0, 0, 0, 0.08);
+--ombre-hover: 0 1.2rem 2.5rem rgba(0, 0, 0, 0.14);
+
+--radius: 1rem;
+--radius-petit: 0.6rem;
+
+}
+
+/* ===================================
+3. BASE DU SITE
+=================================== */
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: Arial, sans-serif;
+
+background-color: var(--fond);
+color: var(--noir);
+
+line-height: 1.6;
+
+overflow-x: hidden;
+
+}
+
+img {
+max-width: 100%;
+display: block;
+}
+
+a {
+color: inherit;
+}
+
+button,
+input,
+textarea {
+font: inherit;
+}
+
+/* ===================================
+4. HEADER
+=================================== */
+
+.header {
+width: 100%;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+padding: 0.8rem 6%;
+
+background-color: rgba(255, 255, 255, 0.95);
+
+border-bottom: 0.1rem solid var(--bordure);
+
+position: sticky;
+top: 0;
+z-index: 1000;
+
+box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.04);
+
+}
+
+/* LOGO */
+
+.logo {
+display: flex;
+align-items: center;
+
+text-decoration: none;
+
+}
+
+.logo img {
+width: 4.2rem;
+height: 4.2rem;
+
+object-fit: contain;
+
+}
+
+/* NAVIGATION */
+
+.header nav ul {
+display: flex;
+align-items: center;
+
+gap: 0.5rem;
+
+list-style: none;
+
+}
+
+.header nav a {
+display: block;
+
+padding: 0.7rem 1rem;
+
+border-radius: 0.5rem;
+
+color: var(--gris-fonce);
+
+font-weight: 600;
+text-decoration: none;
+
+transition: 0.3s;
+
+}
+
+.header nav a:hover {
+color: var(--orange);
+
+background-color: #fff7e6;
+
+}
+
+.header nav a:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+outline: 0.2rem solid var(--orange);
+outline-offset: 0.2rem;
+}
+
+/* ===================================
+5. CONTENU PRINCIPAL
+=================================== */
+
+main {
+width: min(90%, 75rem);
+
+margin: 0 auto;
+
+padding: 3rem 0 6rem;
+
+}
+
+/* ===================================
+6. STYLE GÉNÉRAL DES SECTIONS
+=================================== */
+
+.section {
+margin-top: 7rem;
+}
+
+.section-introduction {
+max-width: 42rem;
+
+margin: 0 auto 3.5rem;
+
+text-align: center;
+
+}
+
+.section-introduction h2,
+.apropos h2,
+.contact-informations h2 {
+font-size: clamp(2rem, 4vw, 3.2rem);
+
+line-height: 1.15;
+
+margin-bottom: 1rem;
+
+}
+
+.section-introduction > p:last-child {
+color: var(--gris);
+
+font-size: 1.05rem;
+
+}
+
+/* PETIT TITRE AU-DESSUS DES SECTIONS */
+
+.section-eyebrow {
+margin-bottom: 0.8rem;
+
+color: var(--orange);
+
+font-size: 0.8rem;
+font-weight: 800;
+
+letter-spacing: 0.12rem;
+
+}
+
+/* ===================================
+7. HERO
+=================================== */
+
+.hero {
+min-height: 34rem;
+
+display: flex;
+align-items: center;
+
+padding: 4rem;
+
+background:
+    radial-gradient(
+        circle at top right,
+        rgba(245, 166, 35, 0.18),
+        transparent 35%
+    ),
+    var(--blanc);
+
+border: 0.1rem solid var(--bordure);
+
+border-radius: 1.5rem;
+
+box-shadow: var(--ombre);
+
+}
+
+.hero-contenu {
+width: 100%;
+
+display: grid;
+grid-template-columns: 1.1fr 0.9fr;
+
+align-items: center;
+
+gap: 3rem;
+
+}
+
+/* TEXTE HERO */
+
+.hero-badge {
+display: inline-block;
+
+margin-bottom: 1.2rem;
+padding: 0.45rem 0.9rem;
+
+border-radius: 2rem;
+
+background-color: #fff7e6;
+
+color: #b76e00;
+
+font-size: 0.9rem;
+font-weight: bold;
+
+}
+
+.hero h1 {
+max-width: 42rem;
+
+margin-bottom: 1.5rem;
+
+font-size: clamp(2.8rem, 6vw, 5rem);
+
+line-height: 1.05;
+letter-spacing: -0.08rem;
+
+}
+
+.hero-description {
+max-width: 38rem;
+
+margin-bottom: 2rem;
+
+color: var(--gris);
+
+font-size: 1.1rem;
+
+}
+
+/* BOUTONS HERO */
+
+.hero-actions {
+display: flex;
+flex-wrap: wrap;
+
+gap: 1rem;
+
+}
+
+.btn {
+display: inline-flex;
+justify-content: center;
+align-items: center;
+
+gap: 0.7rem;
+
+padding: 0.9rem 1.4rem;
+
+border-radius: 0.7rem;
+
+font-weight: bold;
+
+text-decoration: none;
+
+transition: 0.3s;
+
+}
+
+.btn-principal {
+background-color: var(--orange);
+
+color: var(--blanc);
+
+box-shadow: 0 0.5rem 1rem rgba(245, 166, 35, 0.25);
+
+}
+
+.btn-principal:hover {
+background-color: var(--orange-fonce);
+
+transform: translateY(-0.2rem);
+
+}
+
+.btn-secondaire {
+border: 0.1rem solid var(--bordure);
+
+background-color: var(--blanc);
+
+color: var(--noir);
+
+}
+
+.btn-secondaire:hover {
+background-color: var(--fond-secondaire);
+}
+
+/* IMAGE HERO */
+
+.hero-image {
+display: flex;
+justify-content: center;
+align-items: center;
+
+min-height: 25rem;
+
+padding: 2rem;
+
+border-radius: 1.5rem;
+
+background:
+    linear-gradient(
+        135deg,
+        rgba(245, 166, 35, 0.16),
+        rgba(22, 128, 60, 0.1)
+    );
+
+}
+
+.hero-image img {
+width: 100%;
+max-height: 24rem;
+
+object-fit: contain;
+
+transition: transform 0.4s ease;
+
+}
+
+.hero:hover .hero-image img {
+transform: scale(1.04);
+}
+
+/* ===================================
+8. À PROPOS
+=================================== */
+
+.apropos {
+display: grid;
+grid-template-columns: 1fr 1fr;
+
+align-items: center;
+
+gap: 5rem;
+
+}
+
+.apropos-image {
+display: flex;
+justify-content: center;
+align-items: center;
+
+min-height: 28rem;
+
+padding: 2rem;
+
+border-radius: 1.5rem;
+
+background-color: var(--blanc);
+
+box-shadow: var(--ombre);
+
+}
+
+.apropos-image img {
+max-height: 23rem;
+
+object-fit: contain;
+
+}
+
+.apropos-contenu > p:not(.section-eyebrow) {
+margin-bottom: 1.2rem;
+
+color: var(--gris);
+
+}
+
+.lien-section {
+display: inline-flex;
+
+align-items: center;
+
+gap: 0.5rem;
+
+margin-top: 0.5rem;
+
+color: var(--vert);
+
+font-weight: bold;
+
+text-decoration: none;
+
+}
+
+.lien-section:hover {
+color: var(--vert-fonce);
+}
+
+/* ===================================
+9. AVANTAGES
+=================================== */
+
+.avantages {
+padding: 5rem 4rem;
+
+background-color: var(--blanc);
+
+border-radius: 1.5rem;
+
+border: 0.1rem solid var(--bordure);
+
+}
+
+.avantages-container {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+
+gap: 2rem;
+
+}
+
+.avantage {
+padding: 1.8rem;
+
+border: 0.1rem solid var(--bordure);
+
+border-radius: 1rem;
+
+background-color: var(--fond);
+
+transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.avantage:hover {
+transform: translateY(-0.4rem);
+
+box-shadow: var(--ombre);
+
+}
+
+.avantage-icon {
+width: 3.5rem;
+height: 3.5rem;
+
+display: grid;
+place-items: center;
+
+margin-bottom: 1.2rem;
+
+border-radius: 1rem;
+
+background-color: #fff7e6;
+
+font-size: 1.5rem;
+
+}
+
+.avantage h3 {
+margin-bottom: 0.6rem;
+
+font-size: 1.25rem;
+
+}
+
+.avantage p {
+color: var(--gris);
+}
+
+/* ===================================
+10. PRODUITS
+=================================== */
+
+.produits-container {
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 2rem;
+
+}
+
+/* CARTE PRODUIT */
+
+.produit {
+display: flex;
+flex-direction: column;
+
+overflow: hidden;
+
+background-color: var(--blanc);
+
+border: 0.1rem solid var(--bordure);
+
+border-radius: 1rem;
+
+box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.04);
+
+transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.produit:hover {
+transform: translateY(-0.5rem);
+
+box-shadow: var(--ombre-hover);
+
+}
+
+/* IMAGE PRODUIT */
+
+.produit-image {
+position: relative;
+
+height: 15rem;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+padding: 1.5rem;
+
+background-color: var(--fond-secondaire);
+
+}
+
+.produit-image img {
+width: 100%;
+height: 100%;
+
+object-fit: contain;
+
+transition: transform 0.4s;
+
+}
+
+.produit:hover .produit-image img {
+transform: scale(1.06);
+}
+
+.produit-image a {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+.produit h3 a {
+    color: inherit;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.produit h3 a:hover {
+    color: var(--orange);
+}
+
+/* BADGE */
+
+.badge-produit {
+position: absolute;
+
+top: 1rem;
+left: 1rem;
+
+z-index: 1;
+
+padding: 0.35rem 0.7rem;
+
+border-radius: 2rem;
+
+background-color: var(--orange);
+
+color: var(--blanc);
+
+font-size: 0.75rem;
+font-weight: bold;
+
+}
+
+.badge-produit.promotion {
+background-color: var(--vert);
+}
+
+/* CONTENU PRODUIT */
+
+.produit-contenu {
+flex: 1;
+
+display: flex;
+flex-direction: column;
+
+padding: 1.5rem;
+
+}
+
+.categorie {
+margin-bottom: 0.5rem;
+
+color: var(--gris);
+
+font-size: 0.85rem;
+
+}
+
+.produit h3 {
+margin-bottom: 0.8rem;
+
+font-size: 1.3rem;
+
+}
+
+.produit-description {
+margin-bottom: 1.5rem;
+
+color: var(--gris);
+
+}
+
+/* BAS DE CARTE */
+
+.produit-footer {
+margin-top: auto;
+
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+gap: 1rem;
+
+}
+
+.prix {
+color: var(--vert);
+
+font-size: 1.1rem;
+font-weight: bold;
+
+}
+
+.produit button {
+border: none;
+
+padding: 0.7rem 1rem;
+
+border-radius: 0.6rem;
+
+background-color: var(--noir);
+
+color: var(--blanc);
+
+cursor: pointer;
+
+font-weight: bold;
+
+transition: 0.3s;
+
+}
+
+.produit button:hover {
+background-color: var(--orange);
+
+transform: translateY(-0.1rem);
+
+}
+
+/* FILTRES PAR CATÉGORIE */
+
+.filtres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.7rem;
+
+    margin-bottom: 2.5rem;
+}
+
+.filtre {
+    padding: 0.6rem 1.2rem;
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 2rem;
+
+    background-color: var(--blanc);
+    color: var(--gris-fonce);
+
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.filtre:hover {
+    border-color: var(--orange);
+    color: var(--orange);
+}
+
+.filtre.actif {
+    border-color: var(--orange);
+    background-color: var(--orange);
+    color: var(--blanc);
+}
+
+/* ===================================
+11. CONTACT
+=================================== */
+
+.contact-section {
+display: grid;
+grid-template-columns: 0.85fr 1.15fr;
+
+gap: 4rem;
+
+align-items: start;
+
+padding: 4rem;
+
+background-color: var(--blanc);
+
+border: 0.1rem solid var(--bordure);
+
+border-radius: 1.5rem;
+
+box-shadow: var(--ombre);
+
+}
+
+.contact-informations > p:not(.section-eyebrow) {
+margin-bottom: 2rem;
+
+color: var(--gris);
+
+}
+
+/* INFORMATIONS CONTACT */
+
+.contact-details {
+display: flex;
+flex-direction: column;
+
+gap: 1rem;
+
+}
+
+.contact-details a {
+display: flex;
+align-items: center;
+
+gap: 1rem;
+
+padding: 1rem;
+
+border: 0.1rem solid var(--bordure);
+
+border-radius: 0.8rem;
+
+text-decoration: none;
+
+transition: 0.3s;
+
+}
+
+.contact-details a:hover {
+border-color: var(--orange);
+
+background-color: #fffaf0;
+
+}
+
+.contact-details > a > span {
+width: 2.8rem;
+height: 2.8rem;
+
+display: grid;
+place-items: center;
+
+border-radius: 0.7rem;
+
+background-color: var(--fond-secondaire);
+
+font-size: 1.2rem;
+
+}
+
+.contact-details div {
+display: flex;
+flex-direction: column;
+}
+
+.contact-details small {
+color: var(--gris);
+}
+
+/* FORMULAIRE */
+
+.formulaire-container {
+width: 100%;
+}
+
+fieldset {
+border: none;
+}
+
+legend {
+margin-bottom: 1.5rem;
+
+font-size: 1.4rem;
+font-weight: bold;
+
+}
+
+.form-row {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+
+gap: 1rem;
+
+}
+
+.contact {
+display: flex;
+flex-direction: column;
+
+gap: 0.5rem;
+
+margin-bottom: 1.2rem;
+
+}
+
+.contact label {
+font-size: 0.95rem;
+
+font-weight: bold;
+
+}
+
+.contact input,
+.contact textarea {
+width: 100%;
+
+padding: 0.9rem 1rem;
+
+border: 0.1rem solid var(--bordure);
+
+border-radius: 0.6rem;
+
+background-color: var(--fond);
+
+color: var(--noir);
+
+outline: none;
+
+transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+
+}
+
+.contact textarea {
+resize: vertical;
+
+min-height: 8rem;
+
+}
+
+.contact input:focus,
+.contact textarea:focus {
+border-color: var(--orange);
+
+box-shadow: 0 0 0 0.2rem rgba(245, 166, 35, 0.15);
+
+background-color: var(--blanc);
+
+}
+
+/* BOUTONS FORMULAIRE */
+
+.button-contact {
+display: flex;
+
+gap: 1rem;
+
+margin-top: 0.5rem;
+
+}
+
+.button-contact button {
+flex: 1;
+
+border: none;
+
+padding: 0.9rem 1rem;
+
+border-radius: 0.6rem;
+
+cursor: pointer;
+
+font-weight: bold;
+
+transition: 0.3s;
+
+}
+
+.button-contact button[type="submit"] {
+background-color: var(--orange);
+
+color: var(--blanc);
+
+}
+
+.button-contact button[type="submit"]:hover {
+background-color: var(--orange-fonce);
+
+transform: translateY(-0.15rem);
+
+}
+
+.button-reset {
+background-color: var(--fond-secondaire);
+
+color: var(--noir);
+
+}
+
+.button-reset:hover {
+background-color: var(--bordure);
+}
+
+/* MESSAGES DE CONFIRMATION */
+
+.message-succes {
+    margin-bottom: 1.2rem;
+    padding: 0.9rem 1rem;
+
+    border: 0.1rem solid var(--vert);
+    border-radius: 0.6rem;
+
+    background-color: #ecfdf3;
+    color: var(--vert-fonce);
+
+    font-weight: bold;
+}
+
+.errorlist {
+    margin-top: 0.3rem;
+
+    list-style: none;
+
+    color: #b91c1c;
+    font-size: 0.85rem;
+}
+
+/* ===================================
+12. FOOTER
+=================================== */
+
+footer {
+padding: 4rem 6% 1.5rem;
+
+background-color: var(--noir);
+
+color: var(--blanc);
+
+}
+
+.footer-container {
+width: min(100%, 75rem);
+
+margin: 0 auto;
+
+display: grid;
+grid-template-columns: 1.5fr 1fr 1fr;
+
+gap: 3rem;
+
+}
+
+.footer-brand p {
+max-width: 25rem;
+
+margin-top: 1rem;
+
+color: #b5b5b5;
+
+}
+
+.footer-logo {
+color: var(--blanc);
+
+font-size: 1.2rem;
+font-weight: bold;
+
+text-decoration: none;
+
+
+}
+
+.footer-links,
+.footer-contact {
+display: flex;
+flex-direction: column;
+
+gap: 0.7rem;
+
+}
+
+.footer-links h3,
+.footer-contact h3 {
+margin-bottom: 0.5rem;
+
+color: var(--orange);
+
+
+}
+
+.footer-links a,
+.footer-contact a {
+color: #d1d1d1;
+
+text-decoration: none;
+
+transition: 0.3s;
+
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+color: var(--orange);
+}
+
+.footer-bottom {
+width: min(100%, 75rem);
+
+margin: 3rem auto 0;
+padding-top: 1.5rem;
+
+display: flex;
+justify-content: space-between;
+
+gap: 1rem;
+
+border-top: 0.1rem solid #333;
+
+color: #9ca3af;
+
+font-size: 0.9rem;
+}
+
+/* ===================================
+13. TABLETTE
+=================================== */
+
+@media screen and (max-width: 1000px) {
+
+.hero {
+    padding: 3rem;
+}
+
+.produits-container {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-section {
+    gap: 2.5rem;
+
+    padding: 3rem;
+}
+}
+
+/* ===================================
+14. TABLETTE / PETIT ÉCRAN
+=================================== */
+
+@media screen and (max-width: 850px) {
+.apropos {
+    grid-template-columns: 1fr;
+
+    gap: 3rem;
+}
+.apropos-image {
+    min-height: 22rem;
+}
+
+.avantages-container {
+    grid-template-columns: 1fr;
+}
+
+.contact-section {
+    grid-template-columns: 1fr;
+}
+}
+
+/* ===================================
+15. MOBILE
+=================================== */
+
+@media screen and (max-width: 700px) {
+.header {
+    flex-direction: column;
+
+    gap: 0.7rem;
+
+    padding: 0.8rem 1rem;
+}
+
+.logo img {
+    width: 3.5rem;
+    height: 3.5rem;
+}
+
+.header nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+
+    gap: 0.2rem;
+}
+
+.header nav a {
+    padding: 0.55rem 0.7rem;
+
+    font-size: 0.9rem;
+}
+
+
+/* CONTENU */
+
+main {
+    width: 92%;
+
+    padding-top: 2rem;
+}
+
+.section {
+    margin-top: 5rem;
+}
+
+
+/* HERO */
+
+.hero {
+    padding: 2rem;
+
+    min-height: auto;
+}
+
+.hero-contenu {
+    grid-template-columns: 1fr;
+
+    gap: 2rem;
+}
+
+.hero-texte {
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+}
+
+.hero-description {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-actions {
+    justify-content: center;
+}
+
+.hero-image {
+    min-height: 18rem;
+
+    padding: 1rem;
+}
+
+
+/* À PROPOS */
+
+.apropos {
+    text-align: center;
+}
+
+
+/* AVANTAGES */
+
+.avantages {
+    padding: 3rem 1.5rem;
+}
+
+
+/* PRODUITS */
+
+.produits-container {
+    grid-template-columns: 1fr;
+}
+
+.produit-image {
+    height: 17rem;
+}
+
+
+/* CONTACT */
+
+.contact-section {
+    padding: 2rem 1.5rem;
+}
+
+.form-row {
+    grid-template-columns: 1fr;
+}
+
+.button-contact {
+    flex-direction: column;
+}
+
+
+/* FOOTER */
+
+.footer-container {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+}
+
+.footer-brand p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-bottom {
+    flex-direction: column;
+
+    text-align: center;
+}
+}
+
+/* ===================================
+16. PETITS TÉLÉPHONES
+=================================== */
+
+@media screen and (max-width: 480px) {
+.header nav a {
+    padding: 0.5rem;
+
+    font-size: 0.85rem;
+}
+
+.hero {
+    padding: 1.5rem;
+}
+
+.hero-actions {
+    flex-direction: column;
+}
+
+.btn {
+    width: 100%;
+}
+
+.hero-image {
+    min-height: 15rem;
+}
+
+.produit-footer {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.produit-footer button {
+    width: 100%;
+}
+}
+
+/* ===================================
+17. PAGE DÉTAIL PRODUIT
+=================================== */
+
+.detail {
+    margin-top: 1rem;
+}
+
+.lien-retour {
+    display: inline-block;
+
+    margin-bottom: 2rem;
+
+    color: var(--vert);
+
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.lien-retour:hover {
+    color: var(--vert-fonce);
+}
+
+.detail-contenu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    gap: 3rem;
+
+    padding: 3rem;
+
+    background-color: var(--blanc);
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 1.5rem;
+
+    box-shadow: var(--ombre);
+}
+
+.detail-image {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 24rem;
+
+    padding: 2rem;
+
+    border-radius: 1rem;
+
+    background-color: var(--fond-secondaire);
+}
+
+.detail-image img {
+    max-height: 22rem;
+
+    object-fit: contain;
+}
+
+.detail-infos h1 {
+    margin-bottom: 1rem;
+
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+
+    line-height: 1.15;
+}
+
+.detail-prix {
+    margin-bottom: 1.2rem;
+
+    color: var(--vert);
+
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.detail-description {
+    margin-bottom: 2rem;
+
+    color: var(--gris);
+}
+
+.btn-acheter {
+    border: none;
+
+    padding: 0.9rem 1.8rem;
+
+    border-radius: 0.7rem;
+
+    background-color: var(--orange);
+
+    color: var(--blanc);
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn-acheter:hover {
+    background-color: var(--orange-fonce);
+
+    transform: translateY(-0.15rem);
+}
+
+@media screen and (max-width: 850px) {
+    .detail-contenu {
+        grid-template-columns: 1fr;
+
+        padding: 1.5rem;
+    }
+
+    .detail-image {
+        min-height: 16rem;
+    }
+}
+
+/* ===================================
+18. PANIER
+=================================== */
+
+.panier h1 {
+    margin-bottom: 2rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.panier-liste {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+}
+
+.panier-ligne {
+    display: grid;
+    grid-template-columns: 6rem 1fr auto auto;
+    align-items: center;
+
+    gap: 1.5rem;
+
+    padding: 1rem 1.5rem;
+
+    background-color: var(--blanc);
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 1rem;
+
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.04);
+}
+
+.panier-ligne img {
+    width: 6rem;
+    height: 6rem;
+
+    padding: 0.5rem;
+
+    border-radius: 0.6rem;
+
+    background-color: var(--fond-secondaire);
+
+    object-fit: contain;
+}
+
+.panier-infos h2 {
+    margin-bottom: 0.3rem;
+
+    font-size: 1.15rem;
+}
+
+.panier-infos h2 a {
+    color: inherit;
+
+    text-decoration: none;
+}
+
+.panier-infos h2 a:hover {
+    color: var(--orange);
+}
+
+.panier-infos p:last-child {
+    color: var(--gris);
+}
+
+.panier-sous-total {
+    color: var(--vert);
+
+    font-size: 1.1rem;
+    font-weight: bold;
+
+    white-space: nowrap;
+}
+
+.btn-retirer {
+    padding: 0.6rem 1rem;
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 0.6rem;
+
+    background-color: var(--blanc);
+
+    color: #b91c1c;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn-retirer:hover {
+    border-color: #b91c1c;
+
+    background-color: #fef2f2;
+}
+
+.panier-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 2rem;
+    padding: 1.5rem;
+
+    background-color: var(--blanc);
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 1rem;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.panier-total-montant {
+    color: var(--vert);
+
+    font-size: 1.6rem;
+}
+
+.panier-vide {
+    margin-bottom: 1.5rem;
+
+    color: var(--gris);
+
+    font-size: 1.1rem;
+}
+
+@media screen and (max-width: 700px) {
+    .panier-ligne {
+        grid-template-columns: 5rem 1fr;
+
+        gap: 1rem;
+    }
+
+    .panier-ligne img {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    .panier-sous-total,
+    .panier-ligne form {
+        grid-column: 2;
+    }
+}
+
+/* ===================================
+19. COMMANDE ET CONFIRMATION
+=================================== */
+
+.panier-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: 1.5rem;
+}
+
+.commande h1 {
+    margin-bottom: 2rem;
+
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.commande-contenu {
+    display: grid;
+    grid-template-columns: 1.3fr 0.9fr;
+    align-items: start;
+
+    gap: 2rem;
+}
+
+.commande-formulaire,
+.commande-resume {
+    padding: 2rem;
+
+    background-color: var(--blanc);
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 1.5rem;
+
+    box-shadow: var(--ombre);
+}
+
+.commande-resume h2 {
+    margin-bottom: 1.2rem;
+
+    font-size: 1.3rem;
+}
+
+.commande-resume ul,
+.confirmation-lignes {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.8rem;
+}
+
+.commande-resume li,
+.confirmation-lignes li {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding-bottom: 0.8rem;
+
+    border-bottom: 0.1rem solid var(--bordure);
+}
+
+.commande-total {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 1.2rem;
+
+    color: var(--vert);
+
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-valider {
+    width: 100%;
+
+    margin-top: 0.5rem;
+    padding: 0.9rem 1rem;
+
+    border: none;
+    border-radius: 0.6rem;
+
+    background-color: var(--orange);
+
+    color: var(--blanc);
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn-valider:hover {
+    background-color: var(--orange-fonce);
+
+    transform: translateY(-0.15rem);
+}
+
+.confirmation {
+    display: flex;
+    justify-content: center;
+}
+
+.confirmation-carte {
+    width: min(100%, 40rem);
+
+    padding: 3rem 2rem;
+
+    background-color: var(--blanc);
+
+    border: 0.1rem solid var(--bordure);
+    border-radius: 1.5rem;
+
+    box-shadow: var(--ombre);
+
+    text-align: center;
+}
+
+.confirmation-carte h1 {
+    margin-bottom: 1rem;
+
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.confirmation-carte > p {
+    margin-bottom: 1.5rem;
+
+    color: var(--gris);
+}
+
+.confirmation-carte .confirmation-icone {
+    width: 4rem;
+    height: 4rem;
+
+    display: grid;
+    place-items: center;
+
+    margin: 0 auto 1.5rem;
+
+    border-radius: 50%;
+
+    background-color: #ecfdf3;
+
+    color: var(--vert);
+
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.confirmation-lignes {
+    margin-bottom: 1.5rem;
+
+    text-align: left;
+}
+
+.confirmation-carte .confirmation-total {
+    margin-bottom: 2rem;
+
+    color: var(--vert);
+
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 850px) {
+    .commande-contenu {
+        grid-template-columns: 1fr;
+    }
+
+    .commande-formulaire,
+    .commande-resume {
+        padding: 1.5rem;
+    }
+}

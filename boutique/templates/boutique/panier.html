@@ -1,0 +1,71 @@
+{% extends "boutique/base.html" %}
+
+{% block titre %}Mon panier | Computer Store{% endblock %}
+
+{% block contenu %}
+
+<section class="panier">
+
+    <a href="{% url 'accueil' %}#produit" class="lien-retour">
+        ← Continuer mes achats
+    </a>
+
+    <h1>Mon panier</h1>
+
+    {% if lignes %}
+
+    <div class="panier-liste">
+
+        {% for ligne in lignes %}
+        <article class="panier-ligne">
+
+            <img src="{{ ligne.produit.image.url }}" alt="{{ ligne.produit.nom }}">
+
+            <div class="panier-infos">
+                <h2>
+                    <a href="{% url 'detail_produit' ligne.produit.id %}">
+                        {{ ligne.produit.nom }}
+                    </a>
+                </h2>
+                <p class="categorie">{{ ligne.produit.categorie.nom }}</p>
+                <p>{{ ligne.produit.prix }} FCFA × {{ ligne.quantite }}</p>
+            </div>
+
+            <p class="panier-sous-total">{{ ligne.sous_total }} FCFA</p>
+
+            <form action="{% url 'retirer_du_panier' ligne.produit.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-retirer">Retirer</button>
+            </form>
+
+        </article>
+        {% endfor %}
+
+    </div>
+
+    <div class="panier-total">
+        <p>Total</p>
+        <p class="panier-total-montant">{{ total }} FCFA</p>
+    </div>
+
+    <div class="panier-actions">
+        <a href="{% url 'commander' %}" class="btn btn-principal">
+            Valider la commande
+            <span aria-hidden="true">→</span>
+        </a>
+    </div>
+
+    {% else %}
+
+    <p class="panier-vide">Votre panier est vide.</p>
+
+    <a href="{% url 'accueil' %}#produit" class="btn btn-principal">
+        Découvrir nos produits
+        <span aria-hidden="true">→</span>
+    </a>
+
+    {% endif %}
+
+</section>
+
+{% endblock %}

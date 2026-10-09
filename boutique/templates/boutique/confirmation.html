@@ -1,0 +1,42 @@
+{% extends "boutique/base.html" %}
+
+{% block titre %}Commande confirmée | Computer Store{% endblock %}
+
+{% block contenu %}
+
+<section class="confirmation">
+
+    <div class="confirmation-carte">
+
+        <p class="confirmation-icone" aria-hidden="true">✓</p>
+
+        <h1>Merci pour votre commande !</h1>
+
+        <p>
+            Votre commande n°{{ commande.id }} a bien été enregistrée.
+            Nous vous contacterons au {{ commande.telephone }} pour
+            la confirmer et organiser la livraison.
+        </p>
+
+        <ul class="confirmation-lignes">
+            {% for ligne in commande.lignes.all %}
+            <li>
+                <span>{{ ligne.nom_produit }} × {{ ligne.quantite }}</span>
+                <span>{{ ligne.prix_unitaire }} FCFA l'unité</span>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <p class="confirmation-total">
+            Total : {{ commande.total }} FCFA
+        </p>
+
+        <a href="{% url 'accueil' %}" class="btn btn-principal">
+            Retour à l'accueil
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

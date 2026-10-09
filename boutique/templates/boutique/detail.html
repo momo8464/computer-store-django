@@ -1,0 +1,46 @@
+{% extends "boutique/base.html" %}
+
+{% block titre %}{{ produit.nom }} | Computer Store{% endblock %}
+
+{% block contenu %}
+
+<section class="detail">
+
+    <a href="{% url 'accueil' %}#produit" class="lien-retour">
+        ← Retour aux produits
+    </a>
+
+    <div class="detail-contenu">
+
+        <div class="detail-image">
+
+            {% if produit.badge %}
+            <span class="badge-produit">{{ produit.badge }}</span>
+            {% endif %}
+
+            <img src="{{ produit.image.url }}" alt="{{ produit.nom }}">
+
+        </div>
+
+        <div class="detail-infos">
+
+            <p class="categorie">{{ produit.categorie.nom }}</p>
+
+            <h1>{{ produit.nom }}</h1>
+
+            <p class="detail-prix">{{ produit.prix }} FCFA</p>
+
+            <p class="detail-description">{{ produit.description }}</p>
+
+            <form action="{% url 'ajouter_au_panier' produit.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn-acheter">Acheter</button>
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

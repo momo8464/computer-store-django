@@ -1,0 +1,89 @@
+{% extends "boutique/base.html" %}
+
+{% block titre %}Valider ma commande | Computer Store{% endblock %}
+
+{% block contenu %}
+
+<section class="commande">
+
+    <a href="{% url 'panier' %}" class="lien-retour">
+        ← Retour au panier
+    </a>
+
+    <h1>Valider ma commande</h1>
+
+    <div class="commande-contenu">
+
+        <div class="commande-formulaire">
+
+            <form action="{% url 'commander' %}" method="post">
+
+                {% csrf_token %}
+
+                <fieldset>
+
+                    <legend>Vos informations</legend>
+
+                    <div class="form-row">
+
+                        <div class="contact">
+                            <label for="{{ formulaire.nom.id_for_label }}">Nom</label>
+                            {{ formulaire.nom }}
+                            {{ formulaire.nom.errors }}
+                        </div>
+
+                        <div class="contact">
+                            <label for="{{ formulaire.prenom.id_for_label }}">Prénom</label>
+                            {{ formulaire.prenom }}
+                            {{ formulaire.prenom.errors }}
+                        </div>
+
+                    </div>
+
+                    <div class="contact">
+                        <label for="{{ formulaire.telephone.id_for_label }}">Téléphone</label>
+                        {{ formulaire.telephone }}
+                        {{ formulaire.telephone.errors }}
+                    </div>
+
+                    <div class="contact">
+                        <label for="{{ formulaire.adresse.id_for_label }}">Adresse de livraison</label>
+                        {{ formulaire.adresse }}
+                        {{ formulaire.adresse.errors }}
+                    </div>
+
+                    <button type="submit" class="btn-valider">
+                        Confirmer la commande
+                    </button>
+
+                </fieldset>
+
+            </form>
+
+        </div>
+
+        <aside class="commande-resume">
+
+            <h2>Récapitulatif</h2>
+
+            <ul>
+                {% for ligne in lignes %}
+                <li>
+                    <span>{{ ligne.produit.nom }} × {{ ligne.quantite }}</span>
+                    <span>{{ ligne.sous_total }} FCFA</span>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <p class="commande-total">
+                <span>Total</span>
+                <span>{{ total }} FCFA</span>
+            </p>
+
+        </aside>
+
+    </div>
+
+</section>
+
+{% endblock %}
