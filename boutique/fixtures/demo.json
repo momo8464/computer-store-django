@@ -1,0 +1,108 @@
+[
+{
+  "model": "boutique.categorie",
+  "pk": 1,
+  "fields": {
+    "nom": "Gaming"
+  }
+},
+{
+  "model": "boutique.categorie",
+  "pk": 2,
+  "fields": {
+    "nom": "Ordinateur de bureau"
+  }
+},
+{
+  "model": "boutique.categorie",
+  "pk": 3,
+  "fields": {
+    "nom": "Polyvalent"
+  }
+},
+{
+  "model": "boutique.categorie",
+  "pk": 4,
+  "fields": {
+    "nom": "Mini gamme"
+  }
+},
+{
+  "model": "boutique.produit",
+  "pk": 1,
+  "fields": {
+    "nom": "Souris Gaming RGB sans fil",
+    "description": "Une solution pour la fluidité, agréable au toucher.",
+    "prix": 10000,
+    "image": "produits/61qN9d08hgL._AC_SL1500_.jpg",
+    "categorie": 1,
+    "badge": "Nouveau",
+    "disponible": true
+  }
+},
+{
+  "model": "boutique.produit",
+  "pk": 2,
+  "fields": {
+    "nom": "Souris Gaming RGB",
+    "description": "Une solution polyvalente pour le travail, les études et le Gaming.",
+    "prix": 13000,
+    "image": "produits/61rrbeZa4WL._AC_.jpg",
+    "categorie": 1,
+    "badge": "",
+    "disponible": true
+  }
+},
+{
+  "model": "boutique.produit",
+  "pk": 3,
+  "fields": {
+    "nom": "Desktop Home",
+    "description": "Un ordinateur de bureau conçu pour une utilisation quotidienne.",
+    "prix": 200000,
+    "image": "produits/Desktop-Computer-PNG-Free-Download.png",
+    "categorie": 2,
+    "badge": "",
+    "disponible": true
+  }
+},
+{
+  "model": "boutique.produit",
+  "pk": 4,
+  "fields": {
+    "nom": "Souris filaire simple",
+    "description": "Une souris filaire simple, utile et facile d'utilisation.",
+    "prix": 5000,
+    "image": "produits/OIP.webp",
+    "categorie": 4,
+    "badge": "Nouveau",
+    "disponible": true
+  }
+},
+{
+  "model": "boutique.produit",
+  "pk": 5,
+  "fields": {
+    "nom": "PC Moderne",
+    "description": "Une machine polyvalente pour le travail, les études et le divertissement.",
+    "prix": 340000,
+    "image": "produits/ordinateur.png",
+    "categorie": 3,
+    "badge": "",
+    "disponible": true
+  }
+},
+{
+  "model": "boutique.produit",
+  "pk": 6,
+  "fields": {
+    "nom": "Ordinateur bureau",
+    "description": "Une configuration destinée aux utilisateurs recherchant davantage de performances.",
+    "prix": 260000,
+    "image": "produits/pc.png",
+    "categorie": 2,
+    "badge": "",
+    "disponible": true
+  }
+}
+]

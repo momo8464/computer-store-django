@@ -38,13 +38,14 @@ venv\Scripts\activate        # Windows
 pip install -r requirements.txt
 
 python manage.py migrate
+python -X utf8 manage.py loaddata demo
 python manage.py createsuperuser
 python manage.py runserver
 ```
 
 Le site est alors disponible sur http://127.0.0.1:8000 et l'administration sur http://127.0.0.1:8000/admin.
 
-Les produits et les catégories s'ajoutent depuis l'administration.
+La commande `loaddata demo` charge 4 catégories et 6 produits de démonstration, avec leurs images. D'autres produits peuvent être ajoutés depuis l'administration.
 
 ## Structure du projet
 
